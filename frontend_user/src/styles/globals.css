@@ -1,0 +1,127 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+/*
+ * @font-face declarations for Figma commercial/trial fonts:
+ * 1. Linear Sans Trial (by Gradient) — checks local OS font first, then /assets/fonts/, then falls back to Plus Jakarta Sans / Inter
+ * 2. Test Tiempos Headline (by Klim Type Foundry) — checks local OS font first, then /assets/fonts/, then falls back to Newsreader
+ */
+@font-face {
+  font-family: 'Linear Sans Trial';
+  src:
+    local('Linear Sans Trial Regular'),
+    local('Linear Sans Trial'),
+    local('LinearSansTrial-Regular'),
+    url('/assets/fonts/LinearSansTrial-Regular.woff2') format('woff2'),
+    url('/assets/fonts/LinearSansTrial-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Linear Sans Trial';
+  src:
+    local('Linear Sans Trial Italic'),
+    local('LinearSansTrial-Italic'),
+    url('/assets/fonts/LinearSansTrial-Italic.woff2') format('woff2'),
+    url('/assets/fonts/LinearSansTrial-Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Linear Sans Trial';
+  src:
+    local('Linear Sans Trial Semi Bold'),
+    local('Linear Sans Trial SemiBold'),
+    local('LinearSansTrial-SemiBold'),
+    url('/assets/fonts/LinearSansTrial-SemiBold.woff2') format('woff2'),
+    url('/assets/fonts/LinearSansTrial-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Test Tiempos Headline';
+  src:
+    local('Test Tiempos Headline Light Italic'),
+    local('Test Tiempos Headline'),
+    local('TestTiemposHeadline-LightItalic'),
+    url('/assets/fonts/TestTiemposHeadline-LightItalic.woff2') format('woff2'),
+    url('/assets/fonts/TestTiemposHeadline-LightItalic.otf') format('opentype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Map Figma font-family names so exact Figma classes and utility classes render seamlessly */
+.font-\[\'Linear_Sans_Trial\:Regular\'\],
+.font-linear {
+  font-family: var(--font-linear);
+  font-weight: 400;
+  font-style: normal;
+}
+
+.font-\[\'Linear_Sans_Trial\:Italic\'\],
+.font-linear-italic {
+  font-family: var(--font-linear);
+  font-weight: 400;
+  font-style: italic;
+}
+
+.font-\[\'Linear_Sans_Trial\:Semi_Bold\'\],
+.font-linear-semibold {
+  font-family: var(--font-linear);
+  font-weight: 600;
+  font-style: normal;
+}
+
+.font-\[\'Test_Tiempos_Headline\:Light_Italic\'\],
+.font-tiempos-italic {
+  font-family: var(--font-tiempos);
+  font-weight: 300;
+  font-style: italic;
+}
+
+.font-\[\'Inter\:Regular\'\],
+.font-inter {
+  font-family: var(--font-inter);
+  font-weight: 400;
+}
+
+.font-\[\'Inter\:Medium\'\],
+.font-inter-medium {
+  font-family: var(--font-inter);
+  font-weight: 500;
+}
+
+.font-\[\'Inter\:Bold\'\],
+.font-inter-bold {
+  font-family: var(--font-inter);
+  font-weight: 700;
+}
+
+/* Native <dialog> modal scroll containment (Modern Web Guidance: dialog) */
+dialog:modal {
+  overscroll-behavior: contain;
+}
+
+dialog::backdrop {
+  overflow: hidden;
+  overscroll-behavior: contain;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

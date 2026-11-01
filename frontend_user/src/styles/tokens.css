@@ -1,0 +1,54 @@
+/*
+ * frontend_user/src/styles/tokens.css
+ * Design Tokens extracted 100% from Figma Public-Dekstop (bYqgxeNP8gPJDgX3MHWPdG, node-id=0-1)
+ * See docs/design.md for full documentation.
+ */
+
+:root {
+  /* Figma Named Color Styles */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-cream: #faf7f0;
+  --color-grey: #ede9de;
+  --color-grey-75: rgba(237, 233, 222, 0.75);
+  --color-yellow: #ffed78;
+  --color-teal: #7acca8;
+  --color-red: #f27b72;
+  --color-blue2: #99b7e9;
+
+  /* Semantic / Shadcn Mapping */
+  --color-primary: var(--color-yellow);
+  --color-primary-foreground: var(--color-black);
+  --color-secondary: var(--color-black);
+  --color-secondary-foreground: var(--color-white);
+  --color-accent: var(--color-cream);
+  --color-background: var(--color-cream);
+  --color-surface: var(--color-white);
+  --color-border: var(--color-grey);
+  --color-text: var(--color-black);
+  --color-text-muted: rgba(0, 0, 0, 0.6);
+
+  /* Status & Semantic Tokens */
+  --color-success: var(--color-teal);
+  --color-warning: var(--color-yellow);
+  --color-danger: var(--color-red);
+  --color-info: var(--color-blue2);
+
+  /* Typography Stacks */
+  --font-linear: 'Linear Sans Trial', 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-tiempos: 'Test Tiempos Headline', 'Newsreader', Georgia, Cambria, 'Times New Roman', serif;
+  --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Elevation & Radii */
+  --shadow-card: 0px 5px 10px 0px rgba(237, 233, 222, 0.65);
+  --radius-xs: 10px;
+  --radius-sm: 15px;
+  --radius-md: 20px;
+  --radius-lg: 25px;
+  --radius-pill: 27px;
+
+  /* Layout */
+  --canvas-width: 1440px;
+  --container-width: 1280px;
+  --container-padding: 80px;
+}
