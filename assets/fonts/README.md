@@ -1,7 +1,6 @@
 # Figma Custom Font Files (`assets/fonts`)
 
-Taruh file font trial/komersial dari desainer Figma di folder `frontend_user/public/assets/fonts/` jika tersedia:
-- `LinearSansTrial-Regular.woff2` (atau `.otf`)
-- `LinearSansTrial-Italic.woff2` (atau `.otf`)
-- `LinearSansTrial-SemiBold.woff2` (atau `.otf`)
-- `TestTiemposHeadline-LightItalic.woff2` (atau `.otf`)
+Seluruh file font `.otf` dari `linear-sans-font-family.zip` dan `tiempos-font-family.zip` telah diekstrak ke:
+- `assets/fonts/` (workspace root)
+- `frontend_user/public/assets/fonts/` (public static server)
+- `frontend_user/src/assets/fonts/` (source assets)

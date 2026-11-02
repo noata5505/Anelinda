@@ -1,8 +1,30 @@
 /*
  * frontend_admin/src/styles/tokens.css
- * Status: [WAITING FOR FIGMA DESIGN SYSTEM - ADMIN]
- * TODO(design): Akan diisi setelah pengguna mengirimkan proyek Figma untuk Admin & Owner.
+ * Design tokens extracted 1:1 from Figma Admin-Dashboard-pkm (9 PNG screens)
  */
 :root {
-  /* Placeholder netral sesuai AGENTS.md §5.3 */
+  --admin-primary: #2A3088;
+  --admin-cover-bg: #293C91;
+  --admin-bg: #F3F5FA;
+  --admin-login-bg: #EEF1F6;
+  --admin-detail-bg: #F8F9FD;
+  --admin-thumb-bg: #DCE3F2;
+  --admin-surface: #FFFFFF;
+  --admin-border: #E1E6F0;
+  --admin-divider: #EEF1F6;
+  --admin-input-border: #C3CCDF;
+  --admin-text: #14213D;
+  --admin-text-muted: #4D5873;
+
+  /* Status badges */
+  --admin-badge-baru-bg: #FDECC8;
+  --admin-badge-baru-fg: #5C3A00;
+  --admin-badge-diproses-bg: #DCE8FF;
+  --admin-badge-diproses-fg: #1B3F8F;
+  --admin-badge-dikirim-bg: #E6E0FF;
+  --admin-badge-dikirim-fg: #43349A;
+  --admin-badge-selesai-bg: #D8F2E3;
+  --admin-badge-selesai-fg: #17603A;
+
+  --font-admin: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }

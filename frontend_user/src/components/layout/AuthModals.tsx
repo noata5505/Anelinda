@@ -3,7 +3,8 @@ import { useUiStore } from '@/stores/useUiStore';
 
 /**
  * Login & Register Modals — 100% identical to Figma Frame 33 (110:2683) & Frame 34 (118:2791)
- * Uses native <dialog> element with showModal() and responsive sizing.
+ * Uses native <dialog> element with showModal() and responsive sizing so it fits
+ * cleanly on laptop screens without triggering a native dialog scrollbar.
  */
 export function AuthModals() {
   const { activeOverlay, setActiveOverlay, closeOverlays } = useUiStore();
@@ -41,25 +42,25 @@ export function AuthModals() {
           closeOverlays();
         }
       }}
-      className="m-auto bg-transparent p-4 border-0 outline-none max-w-full w-[600px]"
+      className="m-auto bg-transparent p-3 sm:p-4 border-0 outline-none max-w-full max-h-none overflow-visible w-[560px] xl:w-[600px]"
     >
       {activeOverlay === 'login' && (
         /* Frame 33 (110:2683) — Login Modal (max-w 600px) */
         <div
-          className="bg-white border-2 border-[#ede9de] border-solid rounded-[25px] w-full p-6 sm:p-[45px] shadow-[0px_5px_10px_0px_rgba(237,233,222,0.65)]"
+          className="bg-white border-2 border-[#ede9de] border-solid rounded-[25px] w-full p-6 sm:px-[45px] sm:py-[38px] shadow-[0px_5px_10px_0px_rgba(237,233,222,0.65)]"
           data-node-id="110:2683"
         >
           <h2
             id="auth-modal-title"
-            className="font-['Linear_Sans_Trial:Regular'] leading-[normal] not-italic text-[24px] sm:text-[28px] text-black tracking-[-1.4px] mb-6"
+            className="font-['Linear_Sans_Trial:Regular'] leading-[normal] not-italic text-[24px] sm:text-[28px] text-black tracking-[-1.4px] mb-5"
           >
             Selamat Datang Kembali!
           </h2>
 
-          <div className="mb-5">
+          <div className="mb-4">
             <label
               htmlFor="login-email"
-              className="block font-['Linear_Sans_Trial:Regular'] leading-[30px] not-italic text-[20px] text-black tracking-[-1px] mb-2"
+              className="block font-['Linear_Sans_Trial:Regular'] leading-[28px] not-italic text-[18px] sm:text-[20px] text-black tracking-[-1px] mb-1.5"
             >
               Email
             </label>
@@ -69,14 +70,14 @@ export function AuthModals() {
               value={loginEmail}
               onChange={(e) => setLoginEmail(e.target.value)}
               autoFocus
-              className="bg-white border-2 border-[#ede9de] border-solid h-[60px] rounded-[15px] w-full px-[25px] font-['Linear_Sans_Trial:Regular'] text-[20px] text-black tracking-[-1px] outline-none"
+              className="bg-white border-2 border-[#ede9de] border-solid h-[52px] sm:h-[56px] rounded-[15px] w-full px-[25px] font-['Linear_Sans_Trial:Regular'] text-[18px] sm:text-[20px] text-black tracking-[-1px] outline-none"
             />
           </div>
 
-          <div className="mb-7">
+          <div className="mb-6">
             <label
               htmlFor="login-password"
-              className="block font-['Linear_Sans_Trial:Regular'] leading-[30px] not-italic text-[20px] text-black tracking-[-1px] mb-2"
+              className="block font-['Linear_Sans_Trial:Regular'] leading-[28px] not-italic text-[18px] sm:text-[20px] text-black tracking-[-1px] mb-1.5"
             >
               Password
             </label>
@@ -85,17 +86,17 @@ export function AuthModals() {
               type="password"
               value={loginPassword}
               onChange={(e) => setLoginPassword(e.target.value)}
-              className="bg-[#faf7f0] border-2 border-[#ede9de] border-solid h-[60px] rounded-[15px] w-full px-[25px] font-['Linear_Sans_Trial:Regular'] text-[20px] text-black tracking-[-1px] outline-none"
+              className="bg-[#faf7f0] border-2 border-[#ede9de] border-solid h-[52px] sm:h-[56px] rounded-[15px] w-full px-[25px] font-['Linear_Sans_Trial:Regular'] text-[18px] sm:text-[20px] text-black tracking-[-1px] outline-none"
             />
           </div>
 
-          <div className="flex flex-col gap-[15px]">
+          <div className="flex flex-col gap-[12px]">
             <button
               type="button"
               onClick={closeOverlays}
-              className="bg-black flex gap-[10px] h-[55px] items-center justify-center px-[30px] py-[10px] rounded-[27px] w-full cursor-pointer"
+              className="bg-black flex gap-[10px] h-[50px] sm:h-[54px] items-center justify-center px-[30px] py-[10px] rounded-[27px] w-full cursor-pointer"
             >
-              <span className="font-['Linear_Sans_Trial:Regular'] leading-[normal] not-italic text-[22px] text-center text-white tracking-[-1.1px] whitespace-nowrap">
+              <span className="font-['Linear_Sans_Trial:Regular'] leading-[normal] not-italic text-[20px] sm:text-[22px] text-center text-white tracking-[-1.1px] whitespace-nowrap">
                 Masuk
               </span>
             </button>
@@ -103,9 +104,9 @@ export function AuthModals() {
             <button
               type="button"
               onClick={() => setActiveOverlay('register')}
-              className="bg-white border-2 border-black border-solid flex gap-[10px] h-[55px] items-center justify-center px-[30px] py-[10px] rounded-[27px] w-full cursor-pointer"
+              className="bg-white border-2 border-black border-solid flex gap-[10px] h-[50px] sm:h-[54px] items-center justify-center px-[30px] py-[10px] rounded-[27px] w-full cursor-pointer"
             >
-              <span className="font-['Linear_Sans_Trial:Regular'] leading-[normal] not-italic text-[22px] text-center text-black tracking-[-1.1px] whitespace-nowrap">
+              <span className="font-['Linear_Sans_Trial:Regular'] leading-[normal] not-italic text-[20px] sm:text-[22px] text-center text-black tracking-[-1.1px] whitespace-nowrap">
                 Belum Punya Akun?
               </span>
             </button>
@@ -114,24 +115,24 @@ export function AuthModals() {
       )}
 
       {activeOverlay === 'register' && (
-        /* Frame 34 (118:2791) — Register Modal (max-w 600px) */
+        /* Frame 34 (118:2791) — Register Modal (fits cleanly on laptop viewports without scrollbar) */
         <div
-          className="bg-white border-2 border-[#ede9de] border-solid rounded-[25px] w-full p-6 sm:p-[45px] shadow-[0px_5px_10px_0px_rgba(237,233,222,0.65)]"
+          className="bg-white border-2 border-[#ede9de] border-solid rounded-[25px] w-full p-5 sm:px-[42px] sm:py-[28px] shadow-[0px_5px_10px_0px_rgba(237,233,222,0.65)]"
           data-node-id="118:2832"
         >
           <h2
             id="auth-modal-title"
-            className="font-['Linear_Sans_Trial:Regular'] leading-[normal] not-italic text-[24px] sm:text-[28px] text-black tracking-[-1.4px] mb-5"
+            className="font-['Linear_Sans_Trial:Regular'] leading-[normal] not-italic text-[22px] sm:text-[26px] text-black tracking-[-1.3px] mb-3.5"
             data-node-id="118:2833"
           >
             Bergabung Bersama Kami
           </h2>
 
-          <div className="space-y-4">
+          <div className="space-y-2.5">
             <div>
               <label
                 htmlFor="reg-name"
-                className="block font-['Linear_Sans_Trial:Regular'] leading-[30px] not-italic text-[20px] text-black tracking-[-1px] mb-1.5"
+                className="block font-['Linear_Sans_Trial:Regular'] leading-[24px] not-italic text-[17px] sm:text-[18px] text-black tracking-[-0.9px] mb-1"
                 data-node-id="118:2843"
               >
                 Nama Lengkap
@@ -142,7 +143,7 @@ export function AuthModals() {
                 value={regName}
                 onChange={(e) => setRegName(e.target.value)}
                 autoFocus
-                className="bg-white border-2 border-[#ede9de] border-solid h-[60px] rounded-[15px] w-full px-[25px] font-['Linear_Sans_Trial:Regular'] text-[20px] text-black tracking-[-1px] outline-none"
+                className="bg-white border-2 border-[#ede9de] border-solid h-[46px] sm:h-[48px] rounded-[15px] w-full px-[22px] font-['Linear_Sans_Trial:Regular'] text-[17px] sm:text-[18px] text-black tracking-[-0.9px] outline-none"
                 data-node-id="118:2838"
               />
             </div>
@@ -150,7 +151,7 @@ export function AuthModals() {
             <div>
               <label
                 htmlFor="reg-email"
-                className="block font-['Linear_Sans_Trial:Regular'] leading-[30px] not-italic text-[20px] text-black tracking-[-1px] mb-1.5"
+                className="block font-['Linear_Sans_Trial:Regular'] leading-[24px] not-italic text-[17px] sm:text-[18px] text-black tracking-[-0.9px] mb-1"
                 data-node-id="118:2844"
               >
                 Email
@@ -160,7 +161,7 @@ export function AuthModals() {
                 type="email"
                 value={regEmail}
                 onChange={(e) => setRegEmail(e.target.value)}
-                className="bg-[#faf7f0] border-2 border-[#ede9de] border-solid h-[60px] rounded-[15px] w-full px-[25px] font-['Linear_Sans_Trial:Regular'] text-[20px] text-black tracking-[-1px] outline-none"
+                className="bg-[#faf7f0] border-2 border-[#ede9de] border-solid h-[46px] sm:h-[48px] rounded-[15px] w-full px-[22px] font-['Linear_Sans_Trial:Regular'] text-[17px] sm:text-[18px] text-black tracking-[-0.9px] outline-none"
                 data-node-id="118:2839"
               />
             </div>
@@ -168,7 +169,7 @@ export function AuthModals() {
             <div>
               <label
                 htmlFor="reg-password"
-                className="block font-['Linear_Sans_Trial:Regular'] leading-[30px] not-italic text-[20px] text-black tracking-[-1px] mb-1.5"
+                className="block font-['Linear_Sans_Trial:Regular'] leading-[24px] not-italic text-[17px] sm:text-[18px] text-black tracking-[-0.9px] mb-1"
                 data-node-id="118:2845"
               >
                 Password
@@ -178,7 +179,7 @@ export function AuthModals() {
                 type="password"
                 value={regPassword}
                 onChange={(e) => setRegPassword(e.target.value)}
-                className="bg-[#faf7f0] border-2 border-[#ede9de] border-solid h-[60px] rounded-[15px] w-full px-[25px] font-['Linear_Sans_Trial:Regular'] text-[20px] text-black tracking-[-1px] outline-none"
+                className="bg-[#faf7f0] border-2 border-[#ede9de] border-solid h-[46px] sm:h-[48px] rounded-[15px] w-full px-[22px] font-['Linear_Sans_Trial:Regular'] text-[17px] sm:text-[18px] text-black tracking-[-0.9px] outline-none"
                 data-node-id="118:2840"
               />
             </div>
@@ -186,7 +187,7 @@ export function AuthModals() {
             <div>
               <label
                 htmlFor="reg-confirm-password"
-                className="block font-['Linear_Sans_Trial:Regular'] leading-[30px] not-italic text-[20px] text-black tracking-[-1px] mb-1.5"
+                className="block font-['Linear_Sans_Trial:Regular'] leading-[24px] not-italic text-[17px] sm:text-[18px] text-black tracking-[-0.9px] mb-1"
                 data-node-id="118:2846"
               >
                 Konfirmasi Password
@@ -196,25 +197,25 @@ export function AuthModals() {
                 type="password"
                 value={regConfirmPassword}
                 onChange={(e) => setRegConfirmPassword(e.target.value)}
-                className="bg-[#faf7f0] border-2 border-[#ede9de] border-solid h-[60px] rounded-[15px] w-full px-[25px] font-['Linear_Sans_Trial:Regular'] text-[20px] text-black tracking-[-1px] outline-none"
+                className="bg-[#faf7f0] border-2 border-[#ede9de] border-solid h-[46px] sm:h-[48px] rounded-[15px] w-full px-[22px] font-['Linear_Sans_Trial:Regular'] text-[17px] sm:text-[18px] text-black tracking-[-0.9px] outline-none"
                 data-node-id="118:2841"
               />
             </div>
           </div>
 
           {/* Terms Checkbox Row */}
-          <div className="flex justify-center my-6">
+          <div className="flex justify-center my-4">
             <button
               type="button"
               onClick={() => setAgreedTerms((prev) => !prev)}
               className="flex items-center gap-[10px] cursor-pointer"
               data-node-id="118:2847"
             >
-              <span className="size-[20px] flex items-center justify-center border-[1.8px] border-black rounded-[3px] text-[14px] font-bold leading-none shrink-0">
+              <span className="size-[19px] flex items-center justify-center border-[1.8px] border-black rounded-[3px] text-[13px] font-bold leading-none shrink-0">
                 {agreedTerms ? '✓' : ''}
               </span>
               <span
-                className="font-['Linear_Sans_Trial:Regular'] text-[16px] sm:text-[18px] text-black tracking-[-0.9px]"
+                className="font-['Linear_Sans_Trial:Regular'] text-[15px] sm:text-[17px] text-black tracking-[-0.85px]"
                 data-node-id="118:2848"
               >
                 Saya setuju dengan <span className="underline">syarat dan ketentuan</span>
@@ -222,15 +223,15 @@ export function AuthModals() {
             </button>
           </div>
 
-          <div className="flex flex-col gap-[15px]">
+          <div className="flex flex-col gap-[10px]">
             <button
               type="button"
               onClick={closeOverlays}
-              className="bg-black flex gap-[10px] h-[55px] items-center justify-center px-[30px] py-[10px] rounded-[27px] w-full cursor-pointer"
+              className="bg-black flex gap-[10px] h-[46px] sm:h-[48px] items-center justify-center px-[30px] py-[8px] rounded-[27px] w-full cursor-pointer"
               data-node-id="118:2834"
             >
               <span
-                className="font-['Linear_Sans_Trial:Regular'] leading-[normal] not-italic text-[22px] text-center text-white tracking-[-1.1px] whitespace-nowrap"
+                className="font-['Linear_Sans_Trial:Regular'] leading-[normal] not-italic text-[19px] sm:text-[20px] text-center text-white tracking-[-1px] whitespace-nowrap"
                 data-node-id="118:2835"
               >
                 Daftar
@@ -240,11 +241,11 @@ export function AuthModals() {
             <button
               type="button"
               onClick={() => setActiveOverlay('login')}
-              className="bg-white border-2 border-black border-solid flex gap-[10px] h-[55px] items-center justify-center px-[30px] py-[10px] rounded-[27px] w-full cursor-pointer"
+              className="bg-white border-2 border-black border-solid flex gap-[10px] h-[46px] sm:h-[48px] items-center justify-center px-[30px] py-[8px] rounded-[27px] w-full cursor-pointer"
               data-node-id="118:2836"
             >
               <span
-                className="font-['Linear_Sans_Trial:Regular'] leading-[normal] not-italic text-[22px] text-center text-black tracking-[-1.1px] whitespace-nowrap"
+                className="font-['Linear_Sans_Trial:Regular'] leading-[normal] not-italic text-[19px] sm:text-[20px] text-center text-black tracking-[-1px] whitespace-nowrap"
                 data-node-id="118:2837"
               >
                 Sudah Punya Akun?
