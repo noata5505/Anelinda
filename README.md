@@ -10,6 +10,7 @@ Repositori monorepo aplikasi web **Toko Buku Anelinda Books** (`anelinda.com`), 
 
 ```text
 anelinda-books/
+├── docker-compose.yml    # Orkestrasi Docker Compose (frontend_user + frontend_admin)
 ├── frontend_user/        # Aplikasi Pelanggan / Etalase Publik (Port 3000)
 │   ├── Dockerfile        # Multi-stage Docker (deps, development, builder, production)
 │   ├── .env.example      # Contoh variabel environment frontend_user
@@ -105,11 +106,46 @@ Jalankan perintah berikut di dalam folder `frontend_user` maupun `frontend_admin
 
 ---
 
-## 4. Cara Menjalankan Menggunakan Docker
+## 4. Cara Menjalankan Menggunakan Docker & Docker Compose
 
-Kedua aplikasi telah dilengkapi [`frontend_user/Dockerfile`](frontend_user/Dockerfile) dan [`frontend_admin/Dockerfile`](frontend_admin/Dockerfile) *multi-stage* berbasis `node:22-alpine`.
+Kedua aplikasi telah dilengkapi [`docker-compose.yml`](docker-compose.yml), [`frontend_user/Dockerfile`](frontend_user/Dockerfile), dan [`frontend_admin/Dockerfile`](frontend_admin/Dockerfile) *multi-stage* berbasis `node:22-alpine`.
 
-### 4.1 Mode Production (Direkomendasikan untuk Deployment)
+### 4.1 Cara Tercepat dengan Docker Compose (Setelah `git clone`)
+
+Cukup jalankan perintah berikut dari root direktori proyek setelah melakukan `git clone`:
+
+```bash
+# 1. Build & jalankan kedua aplikasi (frontend_user + frontend_admin) di background
+docker compose up -d --build
+
+# 2. Cek status container & healthcheck
+docker compose ps
+
+# 3. Lihat log aplikasi secara real-time (opsional)
+docker compose logs -f
+```
+
+Setelah container berstatus `Up (healthy)`, buka di browser:
+- **Etalase Publik (`frontend_user`)**: **[http://localhost:3000](http://localhost:3000)** (Healthcheck: `http://localhost:3000/healthz`)
+- **Dashboard Admin (`frontend_admin`)**: **[http://localhost:3001](http://localhost:3001)** (Healthcheck: `http://localhost:3001/healthz`)
+
+Untuk menghentikan container:
+```bash
+docker compose down
+```
+
+Jika ingin menjalankan **mode development (Vite HMR / live reload)** melalui Docker Compose:
+```bash
+# Pastikan container production dihentikan terlebih dahulu agar port 3000 & 3001 tidak bentrok
+docker compose down
+
+# Jalankan service development dengan profile "dev"
+docker compose --profile dev up --build frontend_user_dev frontend_admin_dev
+```
+
+---
+
+### 4.2 Build & Run Manual per Container (Mode Production)
 
 #### A. `frontend_user` (Port `3000`)
 ```bash
@@ -145,16 +181,16 @@ docker run -d \
 - Aplikasi dapat diakses di: **[http://localhost:3001](http://localhost:3001)**
 - Healthcheck endpoint: **[http://localhost:3001/healthz](http://localhost:3001/healthz)**
 
-#### C. Menghentikan & Menghapus Container
+#### C. Menghentikan & Menghapus Container Manual
 ```bash
 docker rm -f anelinda-frontend-user anelinda-frontend-admin
 ```
 
 ---
 
-### 4.2 Mode Development via Docker (`--target development`)
+### 4.3 Mode Development Manual via Docker (`--target development`)
 
-Jika ingin menjalankan mode pengembangan (Vite HMR) di dalam container Docker:
+Jika ingin menjalankan mode pengembangan (Vite HMR) per container secara manual:
 
 ```bash
 # Build & jalankan frontend_user (stage development)
