@@ -1,0 +1,18 @@
+services:
+  frontend_user:
+    container_name: frontend_user
+    build:
+      context: ./frontend_user
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    restart: unless-stopped
+
+  frontend_admin:
+    container_name: frontend_admin
+    build:
+      context: ./frontend_admin
+      dockerfile: Dockerfile
+    ports:
+      - "3001:80"
+    restart: unless-stopped
